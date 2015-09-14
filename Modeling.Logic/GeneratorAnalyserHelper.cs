@@ -45,6 +45,7 @@ namespace Modeling.Logic
                     k++;
                 }
             }
+            return k;
         }
     }
 }
