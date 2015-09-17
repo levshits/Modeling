@@ -12,7 +12,6 @@ namespace Modeling.Logic
     {
         #region fields
 
-        private readonly List<int> _generatedValues = new List<int>();
         private int? _shift;
         private int? _period;
 
@@ -41,51 +40,64 @@ namespace Modeling.Logic
 
         #endregion .ctor
 
-        public bool MoveNext()
+        public double Next()
         {
             R = (A * R) % M;
-
-
-            if (_generatedValues.Any(x => x == R) && !_shift.HasValue)
-            {
-                _shift = _generatedValues.IndexOf(R) + 1;
-                _period = _generatedValues.Count - _shift;
-            }
-
-            var hasNext = !IsStopOnCycleDetectionEnabled || _generatedValues.All(x => x != R);
-            if (hasNext)
-            {
-                _generatedValues.Add(R);
-            }
-            return hasNext;
+            return (double)R / M;
         }
 
         public void Reset()
         {
-            _generatedValues.Clear();
+            R = 0;
             _period = null;
             _shift = null;
         }
 
-        double IEnumerator<double>.Current => (double)Current;
-
-        public object Current => (double)_generatedValues.Last() / M;
-
-        public bool IsStopOnCycleDetectionEnabled { get; set; }
+        private void ComputeGeneratorParameters()
+        {
+            
+            var r = R;
+            var a = A;
+            var m = M;
+            var testdata = new List<int>();
+            for (int i = 0; i < m; i++)
+            {
+                r = (a * r) % m;
+            }
+            var testValue = r;
+            r = R;
+            a = A;
+            m = M;
+            var index = 0;
+            while (testdata.Count<2)
+            {
+                index++;
+                r = (a * r) % m;
+                if (testValue == r)
+                {
+                    testdata.Add(index);
+                }
+            }
+            _period = testdata[1] - testdata[0];
+            _shift = m%_period + _period;
+        }
 
         public int? GetPeriod()
         {
+            if (!_period.HasValue)
+            {
+                ComputeGeneratorParameters();
+            }
             return _period;
         }
 
         public int? GetShift()
         {
+            if (!_shift.HasValue)
+            {
+                ComputeGeneratorParameters();
+            }
             return _shift;
-        }
-
-        public List<double> GetGeneratedValues()
-        {
-            return _generatedValues.Select(x => (double)x / M).ToList();
         }
 
         public void Dispose()

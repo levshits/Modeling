@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Modeling.Logic
 {
-    public class GeneratorAnalyserHelper
+    public static class GeneratorAnalyserHelper
     {
         public static double GetMathExpected(List<double> values)
         {

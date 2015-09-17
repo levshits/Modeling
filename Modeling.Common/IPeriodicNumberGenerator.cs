@@ -12,12 +12,6 @@ namespace Modeling.Common
     public interface IPeriodicNumberGenerator: IRandomNumberGenerator
     {
         /// <summary>
-        /// Gets or sets a value indicating whether this instance is stop iteration if cycle detection enabled.
-        /// </summary>
-        /// <value><c>true</c> if this instance is stop on cycle detection enabled; otherwise, <c>false</c>.</value>
-        bool IsStopOnCycleDetectionEnabled { get; set; }
-
-        /// <summary>
         /// Gets the period.
         /// Return null if cycle not already detected
         /// </summary>

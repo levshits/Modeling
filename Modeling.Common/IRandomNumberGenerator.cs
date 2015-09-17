@@ -6,11 +6,7 @@ namespace Modeling.Common
     /// <summary>
     /// Interface IRandomNumberGenerator
     /// </summary>
-    public interface IRandomNumberGenerator: IEnumerator<double>
+    public interface IRandomNumberGenerator
     {
-        /// <summary>
-        /// Gets the generated values.
-        /// </summary>
-        List<double> GetGeneratedValues();
     }
 }

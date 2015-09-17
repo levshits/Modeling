@@ -4,7 +4,7 @@ using Levshits.Wpf.Common.Annotations;
 
 namespace Levshits.Wpf.Common.Model
 {
-    public class ModelBase:INotifyPropertyChanged
+    public class ModelBase: INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

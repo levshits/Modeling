@@ -5,22 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Modeling.View"
         xmlns:viewModel="clr-namespace:Modeling.ViewModel"
+        xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="Main" Height="300" Width="300">
+        Title="Main" Height="300" Width="300" MinWidth="400" MinHeight="300">
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    <Grid>
-        <GroupBox Header="Initial parameters" DataContext="{Binding .InitialParametersModel}" HorizontalAlignment="Left" Margin="10,10,0,10" Width="135">
-            <StackPanel>
-                <Label Content="A"/>
-                <TextBox Margin="5" DataContext="{Binding .A}"></TextBox>
-                <Label Content="M"/>
-                <TextBox Margin="5" DataContext="{Binding .M}"></TextBox>
-                <Label Content="Start value"/>
-                <TextBox Margin="5" DataContext="{Binding .InitialValue}"></TextBox>
-            </StackPanel>
-        </GroupBox>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Height="80.0" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="111*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="A" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Margin="10,2,10,2" Text="{Binding InitialParametersModel.A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:LayoutOverrides="Height"/>
+            <Label Content="M" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
+            <TextBox Margin="10,2,10,2" Text="{Binding InitialParametersModel.M, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"/>
+            <Label Content="R" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
+            <TextBox Margin="10,2,10,2" Text="{Binding InitialParametersModel.InitialValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" d:LayoutOverrides="Height"/>
+
+        </Grid>
+        <Button Content="Compute" Margin="35,85,36,0" VerticalAlignment="Top" Command="{Binding ComputeCommand}"/>
+        <TextBlock Margin="10,109.96,10,10" TextWrapping="Wrap" Text="{Binding AdditionalInfo}"/>
+        <oxy:PlotView Model="{Binding Chart}" Grid.Column="1" Margin="10"></oxy:PlotView>
+
 
     </Grid>
 </Window>
