@@ -6,7 +6,9 @@ namespace Modeling.Common
     /// <summary>
     /// Interface IRandomNumberGenerator
     /// </summary>
-    public interface IRandomNumberGenerator
+    public interface IRandomNumberGenerator: INamedInstance
     {
+        double Next();
+        void Reset();
     }
 }

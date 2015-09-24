@@ -6,11 +6,138 @@
         xmlns:local="clr-namespace:Modeling.View"
         xmlns:viewModel="clr-namespace:Modeling.ViewModel"
         xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:model="clr-namespace:Modeling.Model"
         mc:Ignorable="d"
         Title="Main" Height="300" Width="300" MinWidth="400" MinHeight="300">
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <viewModel:MainViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type model:NormalDistributionParameters}">
+            <Grid Height="80.0" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="A" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsLocked="True"/>
+                <TextBox Text="{Binding A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:IsLocked="True"/>
+                <Label Content="B" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" d:IsLocked="True" />
+                <TextBox Text="{Binding B, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" d:IsLocked="True"/>
+             </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:SimpsonGeneratorParameters}">
+            <Grid Height="80.0" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="A" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsLocked="True"/>
+                <TextBox Text="{Binding A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:IsLocked="True"/>
+                <Label Content="B" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" d:IsLocked="True" />
+                <TextBox Text="{Binding B, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" d:IsLocked="True"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:GausGeneratorParameters}">
+            <Grid Height="80.0" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Mx" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsLocked="True"/>
+                <TextBox Text="{Binding Mx, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:IsLocked="True"/>
+                <Label Content="SigmaX" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" d:IsLocked="True" />
+                <TextBox Text="{Binding SigmaX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" d:IsLocked="True"/>
+                <Label Content="N" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" d:IsLocked="True" />
+                <TextBox Text="{Binding N, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="2" d:LayoutOverrides="VerticalAlignment" d:IsLocked="True"/>
+
+            </Grid>
+            </DataTemplate>
+        <DataTemplate DataType="{x:Type model:ExpGeneratorParameters}">
+            <Grid Height="80.0" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Lambda" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsLocked="True"/>
+                <TextBox Text="{Binding Lambda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:IsLocked="True"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:GammaGeneratorParameters}">
+            <Grid Height="80.0" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Lambda" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsLocked="True"/>
+                <TextBox Text="{Binding Lambda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:IsLocked="True"/>
+                <Label Content="N" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" d:IsLocked="True"/>
+                <TextBox Text="{Binding N, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" d:IsLocked="True"/>
+
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:InitialParametersModel}">
+            <Grid Height="80.0" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="A" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsLocked="True"/>
+                <TextBox Margin="10,2,10,2" Text="{Binding A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:LayoutOverrides="Height" d:IsLocked="True"/>
+                <Label Content="M" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" d:IsLocked="True" />
+                <TextBox Margin="10,2,10,2" Text="{Binding M, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" d:IsLocked="True"/>
+                <Label Content="R" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" d:IsLocked="True"/>
+                <TextBox Margin="10,2,10,2" Text="{Binding InitialValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" d:LayoutOverrides="Height" d:IsLocked="True"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type model:TriangleGeneratorParameters}">
+            <Grid Height="80.0" VerticalAlignment="Top" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="111*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="A" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" d:IsLocked="True"/>
+                <TextBox Text="{Binding A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:IsLocked="True"/>
+                <Label Content="B" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" d:IsLocked="True" />
+                <TextBox Text="{Binding B, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" d:IsLocked="True"/>
+            </Grid>
+        </DataTemplate>
+
+    </Window.Resources>
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,27 +146,13 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Height="80.0" VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="25*"/>
-                <ColumnDefinition Width="111*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="A" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBox Margin="10,2,10,2" Text="{Binding InitialParametersModel.A, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" d:LayoutOverrides="Height"/>
-            <Label Content="M" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" />
-            <TextBox Margin="10,2,10,2" Text="{Binding InitialParametersModel.M, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment"/>
-            <Label Content="R" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
-            <TextBox Margin="10,2,10,2" Text="{Binding InitialParametersModel.InitialValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" d:LayoutOverrides="Height"/>
-
-        </Grid>
-        <Button Content="Compute" Margin="35,85,36,0" VerticalAlignment="Top" Command="{Binding ComputeCommand}"/>
-        <TextBlock Margin="10,109.96,10,10" TextWrapping="Wrap" Text="{Binding AdditionalInfo}"/>
-        <oxy:PlotView Model="{Binding Chart}" Grid.Column="1" Margin="10"></oxy:PlotView>
+        <StackPanel Margin="0,32,0,10" Orientation="Vertical">
+            <ContentControl Content="{Binding InitialParameters, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="Auto"/>
+            <Button Content="Compute" VerticalAlignment="Top" HorizontalAlignment="Center" Command="{Binding ComputeCommand}"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding AdditionalInfo}" Height="Auto" VerticalAlignment="Top"/>
+        </StackPanel>
+        <oxy:PlotView Model="{Binding Chart}" Grid.Column="1" Margin="10"/>
+        <ComboBox Margin="10,0" ItemsSource="{Binding Generators}"  SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding GeneratorId, Mode=TwoWay}" Height="27" VerticalAlignment="Top"/>
 
 
     </Grid>

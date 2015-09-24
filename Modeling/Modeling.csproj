@@ -85,7 +85,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Command\ComputeCommand.cs" />
+    <Compile Include="Logic\GeneratorHelper.cs" />
+    <Compile Include="Logic\GeneratorInitialiser.cs" />
+    <Compile Include="Model\ExpGeneratorParameters.cs" />
+    <Compile Include="Model\GammaGeneratorParameters.cs" />
+    <Compile Include="Model\GausGeneratorParameters.cs" />
+    <Compile Include="Model\InitialParametersBase.cs" />
     <Compile Include="Model\InitialParametersModel.cs" />
+    <Compile Include="Model\NormalDistributionParameters.cs" />
+    <Compile Include="Model\SimpsonGeneratorParameters.cs" />
+    <Compile Include="Model\TriangleGeneratorParameters.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
@@ -142,6 +151,7 @@
   <ItemGroup>
     <Content Include="Configs\spring.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

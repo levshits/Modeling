@@ -45,7 +45,7 @@ namespace Modeling.Logic
                     k++;
                 }
             }
-            return k;
+            return (double)k*2/values.Count;
         }
     }
 }

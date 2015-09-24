@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Modeling.Common;
 
@@ -14,6 +15,7 @@ namespace Modeling.Logic
 
         private int? _shift;
         private int? _period;
+        private int? _r;
 
         #endregion fields
 
@@ -42,13 +44,14 @@ namespace Modeling.Logic
 
         public double Next()
         {
-            R = (A * R) % M;
-            return (double)R / M;
+            _r = _r ?? R;
+            _r = (A * _r) % M;
+            return (double)_r / M;
         }
 
         public void Reset()
         {
-            R = 0;
+            _r = null;
             _period = null;
             _shift = null;
         }
@@ -79,7 +82,7 @@ namespace Modeling.Logic
                 }
             }
             _period = testdata[1] - testdata[0];
-            _shift = m%_period + _period;
+            _shift = m%_period + _period - 1;
         }
 
         public int? GetPeriod()
@@ -104,5 +107,9 @@ namespace Modeling.Logic
         {
             Reset();
         }
+
+        public string Name => "Lehmer generator";
+
+        public Guid Id => GeneratorsConstants.LEHMER_GENERATOR;
     }
 }

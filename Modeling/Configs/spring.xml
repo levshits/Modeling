@@ -3,14 +3,56 @@
 
   <object id="MainViewModel" type="Modeling.ViewModel.MainViewModel, Modeling" singleton="true">
     <property name="ComputeCommand" ref="ComputeCommand"/>
+    <property name="GeneratorHelper" ref="GeneratorHelper"/>
   </object>
   
   <!--Commands-->
   <object id="ComputeCommand" type="Modeling.Command.ComputeCommand, Modeling" singleton="true">
     <property name="ViewModel" ref="MainViewModel"/>
-    <property name="LehmerGenerator" ref="LehmerGenerator"/>
+    <property name="GeneratorHelper" ref="GeneratorHelper"/>
   </object>
   
   <!--Generators-->
-  <object id="LehmerGenerator" type="Modeling.Logic.LehmerRandomNumberGenerator, Modeling.Logic" singleton="true"/>
+  <object id="LehmerGenerator" type="Modeling.Logic.LehmerRandomNumberGenerator, Modeling.Logic" singleton="false"/>
+  <object id="NormalDistributionGenerator" type="Modeling.Logic.NormalDistributionGenerator, Modeling.Logic" singleton="false"/>
+  <object id="GaussGenerator" type="Modeling.Logic.GaussGenerator, Modeling.Logic" singleton="false"/>
+  <object id="ExpGenerator" type="Modeling.Logic.ExpGenerator, Modeling.Logic" singleton="false"/>
+  <object id="GammaGenerator" type="Modeling.Logic.GammaGenerator, Modeling.Logic" singleton="false"/>
+  <object id="TriangleGenerator" type="Modeling.Logic.TriangleGenerator, Modeling.Logic" singleton="false"/>
+  <object id="SipmsonGenerator" type="Modeling.Logic.SipmsonGenerator, Modeling.Logic" singleton="false"/>
+  
+  <!--Initial parameters-->
+  <object id="LehmerInitialParameters" type="Modeling.Model.InitialParametersModel"/>
+  <object id="NormalDistributionParameters" type="Modeling.Model.NormalDistributionParameters"/>
+  <object id="GausGeneratorParameters" type="Modeling.Model.GausGeneratorParameters"/>
+  <object id="ExpGeneratorParameters" type="Modeling.Model.ExpGeneratorParameters"/>
+  <object id="GammaGeneratorParameters" type="Modeling.Model.GammaGeneratorParameters"/>
+  <object id="TriangleGeneratorParameters" type="Modeling.Model.TriangleGeneratorParameters"/>
+  <object id="SimpsonGeneratorParameters" type="Modeling.Model.SimpsonGeneratorParameters"/>
+  
+  <object id="GeneratorHelper" type="Modeling.Logic.GeneratorHelper, Modeling" singleton="true">
+    
+    <property name="NumberGenerators">
+      <list>
+        <ref object="LehmerGenerator"/>
+        <ref object="NormalDistributionGenerator"/>
+        <ref object="GaussGenerator"/>
+        <ref object="ExpGenerator"/>
+        <ref object="GammaGenerator"/>
+        <ref object="TriangleGenerator"/>
+        <ref object="SipmsonGenerator"/>
+      </list>
+    </property>
+    <property name="InitialParameters">
+      <list>
+        <ref object="LehmerInitialParameters"/>
+        <ref object="NormalDistributionParameters"/>
+        <ref object="GausGeneratorParameters"/>
+        <ref object="ExpGeneratorParameters"/>
+        <ref object="GammaGeneratorParameters"/>
+        <ref object="TriangleGeneratorParameters"/>
+        <ref object="SimpsonGeneratorParameters"/>
+      </list>
+    </property>
+  </object>
 </objects>

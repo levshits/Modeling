@@ -1,11 +1,14 @@
-﻿using Levshits.Wpf.Common.Model;
+﻿using System;
+using System.Collections.Generic;
+using Levshits.Wpf.Common.Model;
+using Modeling.Common;
 
 namespace Modeling.Model
 {
     /// <summary>
     /// Class InitialParametersModel.
     /// </summary>
-    public class InitialParametersModel: ModelBase
+    public class InitialParametersModel: InitialParametersBase
     {
         private int _a;
         private int _m;
@@ -48,5 +51,8 @@ namespace Modeling.Model
                 OnPropertyChanged();
             }
         }
+
+        public override List<Guid> AllowedGenerators => new List<Guid> { GeneratorsConstants.LEHMER_GENERATOR};
+        public override bool IsValid => M > 0 && A > 1 && InitialValue >= 1;
     }
 }

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OxyPlot">
+      <HintPath>..\packages\OxyPlot.Core.2015.1.1024-alpha\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,9 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpGenerator.cs" />
+    <Compile Include="GammaGenerator.cs" />
+    <Compile Include="GaussGenerator.cs" />
     <Compile Include="GeneratorAnalyserHelper.cs" />
+    <Compile Include="GeneratorContainer.cs" />
+    <Compile Include="GeneratorGraphicsHelper.cs" />
     <Compile Include="LehmerRandomNumberGenerator.cs" />
+    <Compile Include="NormalDistributionGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SipmsonGenerator.cs" />
+    <Compile Include="TriangleGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modeling.Common\Modeling.Common.csproj">
